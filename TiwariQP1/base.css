@@ -1,0 +1,217 @@
+/* Siddharth Tiwari, 9/30/20, Quarter Project
+
+This is the CSS file for the quarter project. This code is organized by general css (css that I use throughout the quarter project), 
+specific ids (framework for specific parts of the page), and modal box css. The modal box css served as the bulk of the styling code
+for this project. 
+
+Row-Column arrangement from w3schools.com
+
+Modal Box CSS from w3schools.com
+
+Color Pallette developed from coolors.co:
+
+4059AD (outlines, accents, text color)
+6B9AC4 (Header color)
+97D8C4 (buttons, other designs)
+EFF2F1 (body color)
+F4B942 (buttons, other designs)
+*/
+
+ /*GENERAL STYLING SECTION OF CSS (SECTION 1)*/
+/* styling applied to all aspects of the quarter project */
+body{
+	font-family:'Poppins', sans-serif;
+	color: #4059AD;
+	background-color: #EFF2F1;
+	margin: auto;
+	text-align: center;
+	font-size: 24px;
+	/*This makes the modal box sit over the webpage.*/
+	z-index:1000;
+}
+
+/* This styling is specific to a class of button and for all submit inputs*/
+.button, input[type=submit], input[type=radio]{
+	padding: 5px;
+	font-size: 25px;
+	border-radius: 4px;
+	background-color: #4059AD;
+	border: 3px solid #4059AD;
+    font-family:'Poppins', sans-serif;
+    color: #EFF2F1;
+}
+
+/* This styling is applied to all buttons and submit inputs when the user hovers over them*/
+button:hover, input[type=submit]:hover{
+	border: 3px solid #97D8C4;
+	color: #EFF2F1;
+	background-color: #97D8C4;
+	
+}
+
+/* This style is specific to a class of buttons that are small and inside of the modelTable*/
+.smallButton{
+	font-size: 18px;
+	border-radius: 4px;
+	background-color: #4059AD;
+	border: 3px solid #4059AD;
+    font-family:'Poppins', sans-serif;
+	color: #EFF2F1;
+	height:100%;
+	width:100%;
+}
+
+/* This styling is applied to all inputs*/
+input{
+	font-family: 'Poppins', sans-serif;
+	font-size: 22px;
+}
+
+/* This styling is applied to all table headers*/
+th {
+	font-size: 25px;
+	background-color: #4059AD;
+	color: #EFF2F1;
+	padding: 10px;
+	border: 3px solid #6B9AC4;
+  }
+
+  /* This styling is applied to the table on my page*/
+  table{
+	margin:auto;
+  }
+
+  /* This is applied to all table elements*/
+  td {
+	border: 3px solid #6B9AC4;
+	padding: 10px;
+  }
+
+  /*SPECIFIC FRAMEWORK SECTION OF CSS (SECTION 2)*/
+  /*This styling is applied to the top of the webpage*/
+#header{
+    padding: 8px;
+    font-size: 36px;
+    background-color: #6B9AC4;
+    color: #EFF2F1;
+}
+
+/*This styling is applied to the base of the page*/
+#footer{
+    padding: 8px;
+    font-size: 36px;
+    background-color: #97D8C4;
+    color: #EFF2F1;
+}
+
+/* This css defines the invoice, the div that displays the information of purchase*/
+#invoice{
+	border: 2px solid black;
+	color:black;
+	background-color: #EFF2F1;
+	width:60%;
+	margin:auto;
+	display:none;
+}
+
+/*This defines the style of the placeholder text before the form is completed*/
+#placeholderText{
+	width:60%;
+	margin:auto;
+	display:inline-block;
+}
+
+/*This defines the style for the canvas displayed for the car animation*/
+#parkingLot{
+	display:none;
+	margin:auto;
+	background-color: #6B9AC4;
+}
+
+/*This class declares a row so that content can be divided into 2 columns*/
+.row{
+	display:flex;
+}
+
+/*This class defines a column that will be inside of a row*/
+.column{
+	flex:50%;
+	padding: 0px 25px;
+	text-align:center;
+	margin:auto;
+}
+
+
+
+ /*MODAL STYLING SECTION OF CSS (SECTION 3)*/
+
+/*This defines the modal, or the background of the box itself. This displays over the current webpage so then the modal box can be interacted with by the user*/
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 1001; /*Sit on top */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* This styles the 'x' or the close button */
+  .close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+  }
+  
+  /*This defines the style for when the user hovers over the 'x'*/
+  .close:hover,
+  .close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+  }
+
+	/* This defines the styling of the modal box itself. The 'modal' is the background but the 'modal-box' is the box itself*/
+	.modal-content {
+		position: relative;
+		background-color: #EFF2F1;
+		margin: auto;
+		padding: 0;
+		top: 25px;
+		border: 1px solid #888;
+		width: 60%;
+		box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+		/*This is the animation for the modal box that is defined later on in this stylesheet*/
+		animation-name: animatetop;
+		animation-duration: 2s;
+	  }
+
+
+/*I decided to make a header and footer for my modal boxes to make them look more sleek. These three different sections are part of each modal box*/
+/* Modal Header */
+.modal-header {
+	padding: 2px 16px;
+	background-color: #6B9AC4;
+	color: #EFF2F1;
+  }
+  
+  /* Modal Body */
+  .modal-body {
+	  padding: 2px 16px;
+	}
+  
+  /* Modal Footer */
+  .modal-footer {
+	padding: 2px 16px;
+	background-color: #6B9AC4;
+	color: #EFF2F1;
+  }
+  
+  /* This is the animation for the modal box. When it enters the HTML page, it fades in from the top.*/
+  @keyframes animatetop {
+	from {top: -300px; opacity: 0}
+	to {top: 25px; opacity: 1}
+  }

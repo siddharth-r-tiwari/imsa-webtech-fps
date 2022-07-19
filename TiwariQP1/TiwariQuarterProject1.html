@@ -1,0 +1,232 @@
+<!--Siddharth Tiwari, 9/30/20, Quarter Project
+
+    This file contains the HTML, or the structure/framework of my Quarter Project.
+    I used modal box/rows-column format to make my page more exciting and integrated
+    other dynamic features to make this website easy to use.
+
+    I used wikipedia/google for the car information.
+-->
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+        <!--Imported necessary files; javascript file import is at the bottom of html file-->
+        <title>IMSA Car Rental</title>
+        <link rel="shortcut icon" href="favicon.png"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type= "text/css" href="base.css">
+		
+	</head>
+
+    <body>
+        <!--Header at the top of the screen-->
+        <div id="header">
+            <h1>IMSA Car Rental</h1>
+            <!--This is where the animation happens when the user completes the form-->
+            <canvas id="parkingLot" width="800px" height = "200px"></canvas>
+        </div>
+         
+        <!--FIRST ROW OF HTML WEBPAGE-->
+        <div class="row">
+            <!--Left column of the first row-->
+            <div class="column">
+                <h2>Rent a car today!</h2>
+                <!--Opens CARFORM MODAL box-->
+                <button class="button" onclick="showModal('carForm')">Click here to access the form!</button>
+            </div>
+            <!--Right column of the first row; includes info about the table underneath it-->
+            <div class="column">
+                <h2>Our vehicles</h2>
+                <p>Click on each model name to see it's information. A car with a red 'x' means that it is not available. All cars without 'x's are available to rent.</p>
+            </div>   
+        </div>
+
+        <!--CARFORM MODAL BOX-->
+        <div id="carForm" class="modal">
+            <!--The content of the modal box itself-->
+            <div class="modal-content">
+
+                <!--Header of the modal-->
+                <div class="modal-header">
+                    <!--This closes the modal-->
+                    <button onclick="closeModal('carForm')" style="float: right"><span class="close">&times;</span></button>
+                    <h1>Rent a Car Today!</h1>
+                </div>
+
+                <!--Body of the modal-->
+                <div class="modal-body">
+                    <!--the body of the CARFORM MODAl is divided into 2 columns-->
+                    <div class="row">
+                        <!--First column contains the selection of cars-->
+                        <div class="column">
+                            <h3>Choose a car!</h3>
+                            <!--Each radio can be disabled based on which cars are available or not. By default, all cars are available, but the javascript changes this availability.-->
+                            <input type = "radio" name="carSelect" id="0" value="Honda">
+                            <label for="0">Honda</label><br>                               
+                            <input type = "radio" name="carSelect" id="1" value="Ford">
+                            <label for="1">Ford</label><br>                              
+                            <input type = "radio" name="carSelect" id="2" value="Toyota">
+                            <label for="2">Toyota</label><br>                               
+                            <input type = "radio" name="carSelect" id="3" value="Jeep">
+                            <label for="3">Jeep</label><br>                                
+                            <input type = "radio" name="carSelect" id="4" value="Kia">
+                            <label for="4">Kia</label><br>                                
+                            <input type = "radio" name="carSelect" id="5" value="Porsche">
+                            <label for="5">Porsche</label><br>                                
+                            <input type = "radio" name="carSelect" id="6" value="BMW">
+                            <label for="6">BMW</label><br>
+                            <input type = "radio" name="carSelect" id="7" value="Mercedes">
+                            <label for="7">Mercedes</label><br>                               
+                            <input type = "radio" name="carSelect" id="8" value="Lexus">
+                            <label for="8">Lexus</label><br>
+                            <input type = "radio" name="carSelect" id="9" value="Tesla">
+                            <label for="9">Tesla</label><br>            
+                        </div>
+                        <!--Second column contains other input areas-->
+                        <div class="column">
+                            <h3>Personal Information</h3>
+                            <!--input for name-->
+                            Name:
+                            <input type="text" id="name"><br><br>
+                            <!--input for email-->
+                            Email:
+                            <input type="email" id="email"><br>
+                            <h3>Duration of Rental</h3>
+                            <!--input for duration of rental-->
+                            Enter a number of days (in between 1 to 15):
+                            <input type='number' id="carDuration" min="1" max="15">
+                            <!--this stores the current open CARINFORMATION MODAl. This information is NOT derived from the CARFORM MODAL.-->
+                            <input type="hidden" id="idStorage" value="null">
+                        </div>   
+                    </div>
+                
+                <!--This displays the invoice-->
+                <button class="button" onclick="returnInvoice()">Submit</button><br><br>
+
+                </div>
+
+                <!--footer is blank, adds to balance of modal display-->
+                <div class="modal-footer"><br><br><br></div>
+            </div>
+        </div>    
+
+
+        <!--SECOND ROW OF HTML WEBPAGE-->
+        <div class="row">
+            <!--First column displays the invoice one the form is completed. Before the form is completed, it contains basic information about "IMSA car rental"-->
+            <div class="column">
+
+                <!--This is the placeholder text that is displayed before the form is completed-->
+                <div id="placeholderText">
+                    <h3>About Us:</h3>
+                    <p>Welcome to IMSA Car Rental! Because students don't have the opportunity to park their own cars on campus, IMSA loans out cars for a low price! Renting from IMSA will leave you satisified as well as serve for it's greater good. A portion of the money goes to the IMSA fund which will be used for other projects, for you! You can rent an economy vehicle for <b>$29.99</b> a day and a luxury vehicle for <b>$49.99</b> a day! Click on the model names to see information about each vehicle. If a car is not rented already, you can preselect them in the information boxes (If you open the form it will already be preselected)! Safe driving!</p>
+                </div>
+
+                <!--This are the series of divs used to display the invoice. Once the form is completed, this div shows-->
+                <div id="invoice">
+                    <h2>Purchase Details:</h2>
+                    <h4 id="nameInvoice"></h4>
+                    <h4 id="emailInvoice"></h4>
+                    <h4 id="carInvoice"></dih4v>
+                    <h4 id="durationInvoice"></h4>
+                    <h4 id="paymentInvoice"></h4>
+                    <h3>Safe Travels!</h3>
+                </div>    
+            </div>
+
+            <!--The second column contains a display of the availability of each car and a link to it's information-->
+            <div class="column">
+                <table>
+                    <!--Headers of table-->
+                    <tr>
+                        <th colspan="2">Economy Vehicles</th>
+                        <th colspan="2">Luxury Vehicles</th>
+                    </tr>
+                    <!--Some more headers-->
+                    <tr>
+                        <td>Availability</td>
+                        <td>Model</td>
+                        <td>Availability</td>
+                        <td>Model</td>
+                    </tr>
+                    <!--The display of images are changed on the load of the webpage, but at default, all images are set to one src. The buttons lead to the CARINFORMATION MODAL BOX.-->
+                    <tr>
+                        <td> <img id="img0" src="car.png" height="70" width="70"></td>
+                        <td><button class="smallButton" onclick="dataSelector(0)">Honda</button></td>
+                        <td><img id="img5" src="car.png" height="70" width="70"></td>
+                        <td> <button class="smallButton" onclick="dataSelector(5)">Porsche</button></td>
+                    </tr>
+                    <tr>
+                        <td><img id="img1" src="car.png" height="70" width="70"></td>
+                        <td> <button class="smallButton" onclick="dataSelector(1)">Ford</button></td>
+                        <td><img id="img6" src="car.png" height="70" width="70"></td>
+                        <td> <button class="smallButton" onclick="dataSelector(6)">BMW</button></td>
+                    </tr>
+                    <tr>
+                        <td><img id="img2" src="car.png" height="70" width="70"></td>
+                        <td><button class="smallButton" onclick="dataSelector(2)">Toyota</button></td>
+                        <td> <img id="img7" src="car.png" height="70" width="70"></td>
+                        <td><button class="smallButton" onclick="dataSelector(7)">Mercedes</button></td>
+                      </tr>
+                      <tr>
+                        <td>  <img id="img3" src="car.png" height="70" width="70"></td>
+                         <td><button class="smallButton" onclick="dataSelector(3)">Jeep</button></td>
+                         <td><img id="img8" src="car.png" height="70" width="70"></td>
+                        <td><button class="smallButton"onclick="dataSelector(8)"> Lexus</button></td>
+                      </tr>
+                      <tr>
+                        <td> <img id="img4" src="car.png" height="70" width="70"></td>
+                        <td><button class="smallButton" onclick="dataSelector(4)">Kia</button></td>
+                        <td><img id="img9" src="car.png" height="70" width="70"></td>
+                        <td><button class="smallButton" onclick="dataSelector(9)">Tesla</button></td>
+                      </tr>
+                  </table>
+            </div>   
+        </div>
+
+        <!--CAR INFOMRATION MODAL BOX-->
+        <div id="carInfo" class="modal">
+            <!--This modal box is dynamic because it displays information from 10 different sources. No concrete display is in these divs because they come from the javascript file.-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button onclick="closeModal('carInfo')" style="float: right"><span class="close">&times;</span></button>
+                    <!--The car name is displayed for all cars-->
+                    <h2 id="carName"></h2>
+                    <!--The availability is displayed only if a car is not available. If the car is not available, then text is displayed.-->
+                    <h4 id="carAvailability"></h4>
+                </div>
+
+                <div class="modal-body">
+                    <!--The body of the CARINFORMATION MODAL BOX is divided into two columns-->
+                    <div class="row">
+                        <!--This column contains information about the car-->
+                        <div class="column">
+                            <p id="carDescription"></p>
+                        </div>
+                        <!--This column contains a convas used to draw the pictures onto the webpage-->
+                        <div class="column">
+                            <canvas id="imageCanvas" width="400" height="400"></canvas>
+                        </div>   
+                    </div>
+                </div>
+
+                <!--The footer contains a button which can preselect a car on the CARFORM MODAL BOX-->
+                <div class="modal-footer"><br>
+                    <!--If this button is clicked, it preselects the current car on the CAR FORM MODAL BOX. If the user opens the form, then the value will already be selected.-->
+                    <button class="button" id="carPreselect" onclick="preselectForm()">Click here to preselect your car!</button><br><br>
+                </div>
+            </div>
+        </div>
+ 
+        <br><br><br>
+
+        <!--footer/base of HTML Webpage-->
+        <div id="footer">
+            <!--This marquee animates a line of text to go across the bottom of the screen-->
+            <marquee behavior="scroll" direction="left"><b>NOTE: This is a quarter project for the Illinois Mathematics and Science Academy. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Please do not take this seriously.</b></marquee>
+        </div>
+    
+        <script src="functions.js"></script>
+    </body>
+</html>    

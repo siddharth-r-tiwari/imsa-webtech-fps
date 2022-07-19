@@ -1,0 +1,269 @@
+/*Siddharth Tiwari, 11/23/20, CSS File*/
+
+
+/*GENERAL STYLING SECTION OF CSS (SECTION 1)*/
+
+/* styling applied to all aspects of the quarter project */
+
+
+/*color palette from coolors.co*/
+:root {
+    --a: #542E71;
+    --b: #6A66A3;
+    --c: #F5A65B;
+    --d: #84A9C0;
+    --e: #B3CBB9;
+    --white: #EFF2F1;
+}
+
+body {
+    font-family: 'Cabin', sans-serif;
+    margin: auto;
+    text-align: center;
+    font-size: 24px;
+    z-index: 1000;
+    background-color: var(--d);
+}
+
+/*nullifies text*/
+.none {
+    text-decoration: none;
+    color: var(--white);
+}
+
+.noneBack {
+    background-color: var(--white);
+}
+
+/* This styling is applied to all inputs*/
+
+input {
+    font-family: 'Cabin', sans-serif;
+    font-size: 22px;
+    color: var(--a);
+}
+
+/* This styling is specific to a class of button and for all submit inputs*/
+
+button, input[type=submit], input[type=radio] {
+    padding: 5px;
+    font-size: 25px;
+    border-radius: 4px;
+    background-color: var(--a);
+    border: 3px solid var(--a);
+    font-family: 'Cabin', sans-serif;
+    color: var(--white);
+}
+
+/* This styling is applied to all buttons and submit inputs when the user hovers over them*/
+
+button:hover, input[type=submit]:hover {
+    border: 3px solid var(--e);
+    color: var(--white);
+    background-color: var(--e);
+}
+
+ul {
+    list-style-position: inside;
+}
+
+/*ROWS + COLUMNS*/
+/*This class declares a row so that content can be divided into 2 columns*/
+
+.row {
+    display: flex;
+}
+
+/*This class defines a column that will be inside of a row*/
+
+.column {
+    flex: 50%;
+    text-align: center;
+    margin: auto;
+    width: 70%;
+}
+
+
+/*used for making a section/div into a link*/
+.hyperspan {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+
+/*id 'a' through 'e'; used to change background for specific sections of websites*/
+#a {
+    background-color: var(--a);
+}
+
+#b {
+    background-color: var(--b);
+}
+
+#c {
+    background-color: var(--c);
+}
+
+#d {
+    background-color: var(--d);
+}
+
+#e {
+    background-color: var(--e);
+}
+
+
+
+
+/*SPECIFIC FRAMEWORK SECTION OF CSS (SECTION 2)*/
+
+
+
+/* header - This styling is applied to the top of the webpage*/
+#header {
+    padding: 8px;
+    font-size: 36px;
+    background-color: var(--a);
+    color: var(--white);
+}
+
+/* footer - This styling is applied to the base of the webpage*/
+#footer {
+    padding: 8px;
+    font-size: 36px;
+    background-color: var(--e);
+    color: var(--white);
+}
+
+/* info - styling for specific section*/
+#info {
+    padding: 8px;
+    font-size: 36px;
+    background-color: var(--d);
+    color: var(--white);
+}
+
+/* signin - styling for specific section*/
+#signin {
+    padding: 20px;
+    background-color: var(--b);
+    color: var(--white);
+}
+
+/* register - styling for specific section*/
+#register {
+    padding: 20px;
+    background-color: var(--c);
+    color: var(--white);
+}
+
+/* quiz - styling for specific section*/
+#quiz {
+    padding: 8px;
+    font-size: 28px;
+    background-color: var(--d);
+    color: var(--white);
+    width: 60%;
+    margin: auto;
+    text-align: left;
+}
+
+
+
+
+/*MODAL STYLING SECTION OF CSS (FROM PREVIOUS QUARTER PROJECT)*/
+
+/*This defines the modal, or the background of the box itself. This displays over the current webpage so then the modal box can be interacted with by the user*/
+
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1001;
+    /*Sit on top */
+    left: 0;
+    color: #EFF2F1;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+/* This styles the 'x' or the close button */
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/*This defines the style for when the user hovers over the 'x'*/
+
+.close:hover, .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* This defines the styling of the modal box itself. The 'modal' is the background but the 'modal-box' is the box itself*/
+
+.modal-content {
+    background-color: var(--a);
+    position: relative;
+    margin: auto;
+    padding: 0;
+    top: 25px;
+    border: 1px solid #888;
+    width: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*This is the animation for the modal box that is defined later on in this stylesheet*/
+    animation-name: animatetop;
+    animation-duration: 2s;
+}
+
+/*I decided to make a header and footer for my modal boxes to make them look more sleek. These three different sections are part of each modal box*/
+
+/* Modal Header */
+
+.modal-header {
+    background-color: var(--a);
+    padding: 2px 16px;
+    color: #EFF2F1;
+}
+
+/* Modal Body */
+
+.modal-body {
+    background-color: var(--a);
+    padding: 2px 16px;
+}
+
+/* Modal Footer */
+
+.modal-footer {
+    background-color: var(--a);
+    padding: 2px 16px;
+    color: #EFF2F1;
+}
+
+/* This is the animation for the modal box. When it enters the HTML page, it fades in from the top.*/
+
+@keyframes animatetop {
+    from {
+        top: -300px;
+        opacity: 0
+    }
+    to {
+        top: 25px;
+        opacity: 1
+    }
+}
